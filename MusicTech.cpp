@@ -16,6 +16,10 @@ void MusicTech::SetImage(Texture2D picInp){
     image = picInp;
 }
 
+void MusicTech::SetSound(Sound soundInp){
+    sound = soundInp;
+}
+
 string MusicTech::GetName(){
     return name;
 }
@@ -30,4 +34,8 @@ string MusicTech::GetDesc(){
 
 Texture2D MusicTech::GetImage(){
     return image;
+}
+
+Sound MusicTech::GetSound(){
+    return sound;
 }

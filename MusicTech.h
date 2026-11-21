@@ -9,11 +9,13 @@ class MusicTech{
         void SetInventYr(int yearInp);
         void SetDesc(string descInp);
         void SetImage(Texture2D picInp);
+        void SetSound(Sound soundInp);
 
         string GetName();
         int GetInventYr();
         string GetDesc();
         Texture2D GetImage();
+        Sound GetSound();
 
 
     private:
@@ -21,6 +23,7 @@ class MusicTech{
         int inventYr;
         string desc;
         Texture2D image;
+        Sound sound;
 
 
 };
