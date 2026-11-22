@@ -21,5 +21,6 @@ target_link_libraries(example PRIVATE raylib)
 # ==========================================================
 add_executable(main
     main.cpp
+    MusicTech.cpp
 )
 target_link_libraries(main PRIVATE raylib)
