@@ -1,3 +1,4 @@
+#pragma
 #include <string>
 #include "raylib.h"
 using namespace std;
