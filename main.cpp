@@ -202,6 +202,9 @@ int main() {
 
         // Rising line
         DrawLineEx(lineStart, lineEnd, 4, GRAY);
+        // Label the meaning of the line: physical sound -> abstract data
+        DrawText("physical", 70, 655, 20, GRAY);
+        DrawText("more abstract", 1110, 240, 20, GRAY);
 
         // Connectors from each box to the line
         for (int i = 0; i < (int)boxes.size(); i++) {
