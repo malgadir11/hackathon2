@@ -2,48 +2,16 @@
 
 // main.cpp
 // The Development of Music Technology
-// An interactive timeline: boxes sit along a rising line (music becoming
-// more abstract over time). Click a box to open its pop-up, play its sound,
-// and see its source printed in the terminal.
 //
 // Technologies and eras taken from the "Communication devices" section of
-// Crawford & Joler, Calculating Empires (2023): https://calculatingempires.net
-//
-// raylib examples used: core_basic_window, core_input_mouse,
-// textures_logo_raylib, textures_srcrec_dstrec, audio_sound_loading
-// https://www.raylib.com/examples.html
-// Function reference: https://www.raylib.com/cheatsheet/cheatsheet.html
-
+// Crawford & Joler, Calculating Empires (2023), Source: https://calculatingempires.net
 
 #include "raylib.h"
 #include "MusicTech.h"
 #include <iostream>
-#include <sstream>
 #include <string>
 #include <vector>
 using namespace std;
-
-// raylib's DrawText() doesn't wrap lines, so this breaks text into words
-// and starts a new line whenever the next word would go past maxWidth.
-void DrawWrappedText(string text, int x, int y, int maxWidth, int fontSize, Color color) {
-    istringstream words(text);
-    string word;
-    string line;
-
-    while (words >> word) {
-        string test = line.empty() ? word : line + " " + word;
-        if (MeasureText(test.c_str(), fontSize) > maxWidth && !line.empty()) {
-            DrawText(line.c_str(), x, y, fontSize, color);
-            y += fontSize + 6;
-            line = word;
-        } else {
-            line = test;
-        }
-    }
-    if (!line.empty()) {
-        DrawText(line.c_str(), x, y, fontSize, color);
-    }
-}
 
 int main() {
     // ---------- Terminal intro ----------
@@ -51,11 +19,12 @@ int main() {
     cout << "Click a technology in the window to learn about it." << endl;
     cout << "Its source will print here." << endl;
 
-    // ---------- Window + audio setup ----------
     const int screenWidth = 1280;
     const int screenHeight = 720;
     InitWindow(screenWidth, screenHeight, "The Development of Music Technology");
     SetTargetFPS(60);
+
+    SetTextLineSpacing(6);
 
     // ---------- Data for each technology ----------
     vector<string> names = { "Phonograph", "Vinyl LP", "Cassette Tape", "CD",
@@ -63,53 +32,42 @@ int main() {
 
     vector<int> years = { 1877, 1948, 1963, 1982, 1995, 2006, 2024 };
 
-    // file names for resources/<name>.png and resources/<name>.wav
     vector<string> files = { "phonograph", "vinyl", "cassette", "cd",
                              "mp3", "spotify", "ai" };
 
     // Descriptions written for this project from the sources below
     vector<string> descs = {
         // Phonograph
-        "Thomas Edison's phonograph was the first machine that could record sound and play it back. "
-        "A needle carved the sound wave into a groove, so music became a physical shape you could see and touch. "
-        "Before it, the only way to hear a song was live. "
-        "Abstraction: sound becomes a physical groove.",
+        // Source: https://www.smithsonianmag.com/arts-culture/phonograph-changed-music-forever-180957677/
+        "Thomas Edison invented the Phonograph in\n" 
+        "1877. This marks the beginning of an era\n"
+        "where music can be recorded once and heard\n"
+        "by thousands of people.\n\n"
+        "Abstraction: A live performance becomes a\n"
+        "groove, a physical copy of sound you can\n"
+        "see. The sound of instruments people used\n"
+        "to hear in person is now stored as lines\n"
+        "and waves on a cylinder.",
+        
+        
 
         // Vinyl LP
-        "Columbia Records introduced the 33 1/3 rpm long-playing record in 1948. "
-        "One 12-inch disc held over 20 minutes per side, compared to a few minutes on older 78s, "
-        "which made the full album possible. Sound is still a groove, but now mass-produced on cheap vinyl. "
-        "Efficient for whom? Labels could now sell whole albums.",
+        "",
 
         // Cassette Tape
-        "Philips, with a team led by Lou Ottens, introduced the Compact Cassette in 1963. "
-        "Sound became an invisible magnetic pattern on tape. It was small, cheap and recordable, "
-        "so anyone could copy songs or make a mixtape. Philips licensed it free to other companies, "
-        "which made it a world standard. Abstraction: sound becomes a magnetic pattern.",
+        "",
 
         // CD
-        "Sony and Philips developed the compact disc together, and it went on sale in Japan in 1982. "
-        "Music became a list of numbers (44,100 per second) read by a laser: no hiss, no wear, "
-        "and perfect copies. But you can no longer see the sound at all. "
-        "Abstraction: sound becomes numbers.",
+        "",
 
         // MP3
-        "Researchers at Germany's Fraunhofer Institute developed MP3 compression and named the "
-        ".mp3 file type in 1995. It throws away sounds our ears are unlikely to notice, shrinking "
-        "a song to about a tenth of its size. That made music small enough to share online, and file "
-        "sharing like Napster followed. Abstraction: compressed numbers, with information lost on purpose.",
+        "",
 
         // Spotify
-        "Spotify was founded in Sweden in 2006 and launched in 2008. Instead of owning music, "
-        "listeners pay for access to a library stored on company servers. Artists are paid from a share "
-        "of revenue based on their share of all streams, not per sale. The app also tracks what you "
-        "play and skip. Abstraction: music becomes a link to someone else's server.",
+        "",
 
         // AI Music
-        "Tools like Suno and Udio generate whole songs, including vocals, from a text prompt in seconds. "
-        "In 2024, major record labels sued both companies, claiming they trained on copyrighted "
-        "recordings without permission or payment. No performer is needed at all. "
-        "Abstraction: sound generated from patterns in data. Efficient for whom?"
+        ""
     };
 
     vector<string> sources = {
@@ -123,7 +81,7 @@ int main() {
     };
 
     // ---------- Build the MusicTech objects ----------
-    // Textures and sounds can only load AFTER InitWindow() and InitAudioDevice()
+    // Textures can only load AFTER InitWindow()
     vector<MusicTech> techs;
     for (int i = 0; i < (int)names.size(); i++) {
         MusicTech tech;
@@ -256,7 +214,7 @@ int main() {
             }
 
             // Description
-            DrawWrappedText(tech.GetDesc(), popup.x + 360, popup.y + 80, 510, 20, DARKGRAY);
+            DrawText(tech.GetDesc().c_str(), popup.x + 360, popup.y + 80, 20, DARKGRAY);
 
         }
 
