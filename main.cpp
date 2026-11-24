@@ -1,3 +1,5 @@
+// Made by Mohamed Algadir and Son Le
+
 // main.cpp
 // The Development of Music Technology
 // An interactive timeline: boxes sit along a rising line (music becoming

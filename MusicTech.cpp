@@ -7,7 +7,7 @@
 // they are private.
 // 
 // We built our setters and getters using the ideas from Zybooks Week 11 Reading 
-// Based on Chapter 7 Objects and Classes
+// Based on Chapter 7 Objects and Classes 
 // ********************************************************************************
 
 
@@ -65,3 +65,6 @@ Texture2D MusicTech::GetImage(){
     return image;
 }
 
+// We originally planned to store a sound for each tech, but removed it to keep
+// focus on the timeline.
+// For the future we would like to add 

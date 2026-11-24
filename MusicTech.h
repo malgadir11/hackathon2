@@ -7,6 +7,8 @@
 // 
 // We built our class structure using the ideas from Zybooks Week 11 Reading
 // Based on Chapter 7 Objects and Classes
+// We kept this class data-only to keep it simple and matches what we learned in
+// Chapter 7. All drawing happens in main.cpp.
 // ***********************************************************************************
 #include <string>
 #include "raylib.h"
