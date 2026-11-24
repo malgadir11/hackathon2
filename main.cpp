@@ -53,7 +53,6 @@ int main() {
     const int screenWidth = 1280;
     const int screenHeight = 720;
     InitWindow(screenWidth, screenHeight, "The Development of Music Technology");
-    InitAudioDevice();          // must come before loading any sounds
     SetTargetFPS(60);
 
     // ---------- Data for each technology ----------
@@ -130,7 +129,6 @@ int main() {
         tech.SetInventYr(years[i]);
         tech.SetDesc(descs[i]);
         tech.SetImage(LoadTexture(("resources/" + files[i] + ".png").c_str()));
-        tech.SetSound(LoadSound(("resources/" + files[i] + ".wav").c_str()));
         techs.push_back(tech);
     }
 
@@ -161,7 +159,6 @@ int main() {
     // ---------- Pop-up layout ----------
     Rectangle popup    = { 190, 110, 900, 500 };
     Rectangle closeBtn = { popup.x + popup.width - 50, popup.y + 15, 35, 35 };
-    Rectangle playBtn  = { popup.x + 360, popup.y + popup.height - 75, 200, 45 };
     Rectangle imgArea  = { popup.x + 30, popup.y + 80, 300, 300 };
 
     int selected = -1;   // index of the open pop-up, -1 means none
@@ -184,12 +181,8 @@ int main() {
             }
         } else {
             if (clicked && CheckCollisionPointRec(mouse, closeBtn)) {
-                StopSound(techs[selected].GetSound());
                 selected = -1;
-            } else if (clicked && techs[selected].GetSound().frameCount > 0 && CheckCollisionPointRec(mouse, playBtn)) {
-                PlaySound(techs[selected].GetSound());
-                cout << "Playing: " << techs[selected].GetName() << endl;
-            }
+            } 
         }
 
         // ----- Draw -----
@@ -263,26 +256,14 @@ int main() {
             // Description
             DrawWrappedText(tech.GetDesc(), popup.x + 360, popup.y + 80, 510, 20, DARKGRAY);
 
-            // Play sound button
-            if (tech.GetSound().frameCount > 0) {
-            bool overPlay = CheckCollisionPointRec(mouse, playBtn);
-            bool playing = IsSoundPlaying(tech.GetSound());
-            DrawRectangleRounded(playBtn, 0.3f, 8, overPlay ? DARKBLUE : BLUE);
-            const char* playLabel = playing ? "Playing..." : "Play sound";
-            int playW = MeasureText(playLabel, 20);
-            DrawText(playLabel, playBtn.x + (playBtn.width - playW) / 2, playBtn.y + 12, 20, RAYWHITE);
-            }
         }
 
         EndDrawing();
     }
-
     // ---------- Clean up ----------
     for (int i = 0; i < (int)techs.size(); i++) {
         UnloadTexture(techs[i].GetImage());
-        UnloadSound(techs[i].GetSound());
     }
-    CloseAudioDevice();
     CloseWindow();
     return 0;
 }
