@@ -67,4 +67,4 @@ Texture2D MusicTech::GetImage(){
 
 // We originally planned to store a sound for each tech, but removed it to keep
 // focus on the timeline.
-// For the future we would like to add 
+// For the future we would like to add a sound for each
