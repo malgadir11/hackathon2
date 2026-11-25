@@ -17,7 +17,7 @@ int main() {
     // ---------- Terminal intro ----------
     cout << "=== The Development of Music Technology ===" << endl;
     cout << "Click a technology in the window to learn about it." << endl;
-    cout << "Its source will print here." << endl;
+    cout << "The technology you open will print here." << endl;
 
     const int screenWidth = 1280;
     const int screenHeight = 720;
@@ -35,7 +35,8 @@ int main() {
     vector<string> files = { "phonograph", "vinyl", "cassette", "cd",
                              "mp3", "spotify", "ai" };
 
-    // Descriptions written for this project from the sources below
+    // Descriptions written for this project
+    // The source for each one is in the comment above it
     vector<string> descs = {
         // Phonograph
         // Source: https://www.smithsonianmag.com/arts-culture/phonograph-changed-music-forever-180957677/
@@ -49,36 +50,114 @@ int main() {
         "to hear in person is now stored as lines\n"
         "and waves on a cylinder.",
         
-        
 
-        // Vinyl LP
-        "",
+        // Vinyl
+        // Source: https://blogs.loc.gov/now-see-hear/2019/04/inside-the-archival-box-the-first-long-playing-disc/ 
+        "Columbia Records introduced the Vinyl LP\n"
+        "in 1948. Before the invention of the LP\n"
+        "(\"long playing\" because it plays longer\n"
+        "than older records), an album consisted of\n"
+        "several discs that could only hold a few \n"
+        "minutes of music. Now an entire album could\n"
+        "fit on one record, so musicians started to\n"
+        "prioritize making full albums rather than\n"
+        "singles.\n\n"
+        "Abstraction: Many discs became one disc.\n"
+        "Sound is still a groove, but squeezed into\n"
+        "thinner lines so more music can fit on a\n"
+        "single object. The early disc designs were\n"
+        "able to hold up to 45 minutes worth of\n"
+        "music.",
 
         // Cassette Tape
-        "",
+        // Sources: https://www.npr.org/2021/03/10/975598869/lou-ottens-inventor-of-the-cassette-tape-has-died
+        // https://www.philips.nl/en/a-w/philips-museum/stories/soundtrack-to-peoples-lives.html
+        "Lou Ottens and his team at Philips invented\n"
+        "the cassette tape in 1963. It gave anyone\n"
+        "the ability to not just play music, but\n"
+        "record on it too. Anyone could make\n"
+        "mixtapes, copy music, or record their own\n"
+        "songs at home with no studio or factory\n"
+        "needed.\n\n"
+        "Abstraction: Instead of grooves you can see,\n"
+        "sound is now an invisible magnetic pattern\n"
+        "on tape, so you can't see the music anymore.\n"
+        "Tapes could be erased and recorded over,\n"
+        "making them more versatile than records.",
 
         // CD
-        "",
+        // Source: https://www.theregister.com/2012/10/01/compact_disc_is_30_years_old/
+        "Sony and Philips teamed up in 1979 to build\n"
+        "a disc that stores music digitally. The\n"
+        "first CDs and CD players were sold in Japan\n"
+        "in 1982. The CD turned music into computer\n"
+        "data that reads as 1s and 0s. Because music\n"
+        "was now numbers instead of a physical copy,\n"
+        "it could be perfectly copied and read by\n"
+        "computers, which opened the door to\n"
+        "digital music.\n\n"
+        "Abstraction: Grooves and magnetic patterns\n"
+        "stored copies of sound waves. A CD only\n"
+        "describes the wave using numbers, which\n"
+        "requires a machine to turn them into sound.\n"
+        "Therefore, real music is replaced by a\n"
+        "description of it in the form of numbers.",
 
         // MP3
-        "",
-
+        // Sources: https://www.mp3-history.com/en/whatismp3.html
+        // https://heise.de/-10485563
+        "The MP3 was invented by Karlheinz\n"
+        "Brandenburg and his team of researchers at\n"
+        "the Fraunhofer Institute in Germany in\n"
+        "1995. Songs were compressed to about 10% of\n"
+        "their original size, which made it small\n"
+        "enough to be able to download and share\n"
+        "online. You could now carry thousands of\n"
+        "songs just on a small MP3 player.\n\n"
+        "Abstraction: The CD turned music into\n"
+        "numbers, and the MP3 compressed those\n"
+        "numbers by deleting what we wouldn't notice.\n"
+        "The trade-off for convenience is that we\n"
+        "lose quality of the sound and the full song\n"
+        "for mass storage of music.",
+        
         // Spotify
-        "",
+        // Sources: https://www.ebsco.com/research-starters/business-and-management/spotify-company
+        // https://lex.dk/Spotify
+        "Spotify was founded by Daniel Ek and Martin\n"
+        "Lorentzon in Stockholm, Sweden, in 2006.\n"
+        "Spotify is a music streaming service where\n"
+        "the music lives on Spotify's computers\n"
+        "instead of yours. It is streamed to you with\n"
+        "the requirement of having a subscription or\n"
+        "watching ads.\n\n"
+        "Abstraction: Instead of owning music like\n"
+        "you did with CDs or records or even MP3\n"
+        "files, now you own nothing. Millions of\n"
+        "songs are available and can be played\n"
+        "anywhere at an instant, but in exchange for\n"
+        "convenience, music became a service we rent\n"
+        "rather than something we own.",
 
         // AI Music
-        ""
+        // Sources: https://www.technologyreview.com/2024/06/27/1094379/ai-music-suno-udio-lawsuit-record-labels-youtube-licensing/
+        // https://www.nbcnews.com/tech/tech-news/us-record-labels-are-suing-ai-music-generators-alleging-copyright-infr-rcna158660
+        "Suno and Udio released AI music generators\n"
+        "that became popular in 2024, where you can\n"
+        "create full songs with vocals from a short\n"
+        "text prompt in seconds. The AI was trained\n"
+        "on music that was created by people. That\n"
+        "same year, major record labels sued both\n"
+        "companies for using their music without\n"
+        "permission.\n\n"
+        "Abstraction: Every earlier technology\n"
+        "started with a real person performing. Now\n"
+        "no performer is needed at all. Sound is\n"
+        "generated from patterns in data, making\n"
+        "music easier to create than ever, but at\n"
+        "the cost of identity and originality."
     };
 
-    vector<string> sources = {
-        "Smithsonian Magazine, How the Phonograph Changed Music Forever: smithsonianmag.com/arts-culture/phonograph-changed-music-forever-180957677",
-        "Library of Congress, The First Long-Playing Disc: blogs.loc.gov/now-see-hear/2019/04/inside-the-archival-box-the-first-long-playing-disc",
-        "Philips Museum, Soundtrack to People's Lives: philips.nl/en/a-w/philips-museum/stories/soundtrack-to-peoples-lives.html",
-        "The Register, Happy Birthday Compact Disc (2012): theregister.com/2012/10/01/compact_disc_is_30_years_old",
-        "Fraunhofer IIS, The mp3 History: mp3-history.com/en/whatismp3.html; heise, 30 Years of MP3: heise.de/-10485563",
-        "EBSCO, Spotify (company): ebsco.com/research-starters/business-and-management/spotify-company",
-        "NBC News, Record labels sue AI music generators (2024): nbcnews.com/tech/tech-news/us-record-labels-are-suing-ai-music-generators-alleging-copyright-infr-rcna158660"
-    };
 
     // ---------- Build the MusicTech objects ----------
     // Textures can only load AFTER InitWindow()
@@ -135,7 +214,7 @@ int main() {
                     selected = i;
                     cout << endl << "--- " << techs[i].GetName()
                          << " (" << techs[i].GetInventYr() << ") ---" << endl;
-                    cout << "Source: " << sources[i] << endl;
+                    cout << techs[i].GetDesc() << endl;
                     break;
                 }
             }
